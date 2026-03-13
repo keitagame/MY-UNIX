@@ -151,21 +151,21 @@ iso: $(BUILD)/$(KERNEL) $(BUILD)/$(INITRD)
 	cp $(BUILD)/$(KERNEL)  $(ISOBOOT)/kernel.elf
 	cp $(BUILD)/$(INITRD)  $(ISOBOOT)/initrd.cpio
 	@cat > $(ISOGRUB)/grub.cfg << 'EOF'
-set timeout=3
-set default=0
+	set timeout=3
+	set default=0
 
-menuentry "Unix Kernel" {
-    multiboot2 /boot/kernel.elf
-    module2    /boot/initrd.cpio
-    boot
-}
+	menuentry "Unix Kernel" {
+	multiboot2 /boot/kernel.elf
+	module2    /boot/initrd.cpio
+	boot
+	}
 
-menuentry "Unix Kernel (serial debug)" {
-    multiboot2 /boot/kernel.elf console=ttyS0
-    module2    /boot/initrd.cpio
-    boot
-}
-EOF
+	menuentry "Unix Kernel (serial debug)" {
+	multiboot2 /boot/kernel.elf console=ttyS0
+	module2    /boot/initrd.cpio
+	boot
+	}
+	EOF
 	$(GRUB_MK) -o $(BUILD)/$(ISO) $(ISODIR)
 	@echo "  ISO created: $(BUILD)/$(ISO)"
 	@ls -lh $(BUILD)/$(ISO)

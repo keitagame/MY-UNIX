@@ -218,7 +218,9 @@ context_switch:
     mov [rdi + 40], r15
 
     ; RSPとRIPを保存
-    lea rax, [rip + .return]
+    lea rax, [rel .return]
+
+    ;lea rax, [rip + .return]
     mov [rdi + 56], rax     ; rip
     mov [rdi + 48], rsp     ; rsp
 
@@ -483,7 +485,8 @@ gdt_flush:
     mov fs, ax
     mov gs, ax
     push 0x08
-    lea rax, [rip + .flush_cs]
+    lea rax, [rel .flush_cs]
+    ;lea rax, [rip + .flush_cs]
     push rax
     retfq
 .flush_cs:
