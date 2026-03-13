@@ -150,10 +150,11 @@ iso: $(BUILD)/$(KERNEL) $(BUILD)/$(INITRD)
 	@mkdir -p $(ISOGRUB)
 	cp $(BUILD)/$(KERNEL)  $(ISOBOOT)/kernel.elf
 	cp $(BUILD)/$(INITRD)  $(ISOBOOT)/initrd.cpio
-	@cat > $(ISOGRUB)/grub.cfg << 'EOF'
+	cp grub.cfg $(ISOGRUB)/grub.cfg
+	$(GRUB_MK) -o $(BUILD)/$(ISO) $(ISODIR)
+	@cat > $(ISOGRUB)/grub.cfg << EOF
 	set timeout=3
 	set default=0
-
 	menuentry "Unix Kernel" {
 	multiboot2 /boot/kernel.elf
 	module2    /boot/initrd.cpio
