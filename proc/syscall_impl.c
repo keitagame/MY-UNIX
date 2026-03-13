@@ -14,7 +14,7 @@
  * syscallテーブル
  * ============================================================ */
 static syscall_fn_t g_syscall_table[NR_SYSCALLS];
-
+extern vnode_t *g_root_vnode;
 void syscall_register(int nr, syscall_fn_t fn)
 {
     if (nr >= 0 && nr < NR_SYSCALLS)

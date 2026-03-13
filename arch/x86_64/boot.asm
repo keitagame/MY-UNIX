@@ -76,6 +76,7 @@ boot_pd:
 ; カーネルスタック (boot用)
 ; ============================================================
 align 16
+global boot_stack_top
 boot_stack_bottom:
     resb 16384          ; 16KB boot stack
 boot_stack_top:
