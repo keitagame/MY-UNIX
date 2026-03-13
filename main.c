@@ -23,6 +23,8 @@
 #define COM1_LSR_THRE 0x20  /* Transmit Hold Register Empty */
 
 static bool g_serial_ok = false;
+extern process_t *g_init_proc;
+extern struct vnode *g_root_vnode;
 
 static void serial_init(void)
 {

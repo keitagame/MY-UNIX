@@ -278,7 +278,7 @@ int pipe_create(file_t **read_end, file_t **write_end);
 /* ============================================================
  * ターミナル/TTY
  * ============================================================ */
-#include <stdint.h>
+//#include <stdint.h>
 
 /* termios */
 typedef uint32_t tcflag_t;
