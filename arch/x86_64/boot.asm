@@ -184,14 +184,15 @@ long_mode_entry:
 
     ; RDI = mbi物理アドレス (32bitだが後で仮想アドレスに変換)
     ; RSI = multiboot magic
-
+    ;movzx rdi, esi      ; magic
+    ;movzx rsi, edi      ; mbi_phys
     ; カーネルCエントリへジャンプ
     ; kernel_entry(uint32_t magic, uint32_t mbi_phys)
-    mov rdi, rsi        ; magic → arg1
-    mov rsi, rdi        ; mbi_phys → arg2 (実はEDIに入っている)
+    ;mov rdi, rsi        ; magic → arg1
+    ;mov rsi, rdi        ; mbi_phys → arg2 (実はEDIに入っている)
     
     ; 正しく渡す
-    movzx rdi, edi      ; magic (ESI がEDIとして保存されていた)
+    ;movzx rdi, edi      ; magic (ESI がEDIとして保存されていた)
     ; mbiはRSI
 
     call kernel_entry
