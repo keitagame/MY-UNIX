@@ -39,6 +39,10 @@ static ALWAYS_INLINE void *pte_to_virt(pte_t pte)
 /* ============================================================
  * PTEを取得/作成
  * ============================================================ */
+/* vmm.c の先頭あたりに追加 */
+
+void vmm_map_phys_huge(pml4_t *pml4, uintptr_t virt_base,
+                       uintptr_t phys_base, uint64_t size, uint64_t flags);
 
 /* level: 4=PML4, 3=PDPT, 2=PD, 1=PT */
 static pte_t *vmm_get_pte(pml4_t *pml4, uintptr_t virt, bool create, uint64_t flags)
